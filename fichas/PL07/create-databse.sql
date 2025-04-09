@@ -1,24 +1,27 @@
+
+-- DROP DATABASE IF EXISTS MontagemAparelhos;
+
 CREATE DATABASE MontagemAparelhos;
 
 USE MontagemAparelhos;
 
-/* Cria a tabela da Familia */
-CREATE TABLE Familia (
+-- Cria a tabela da Familia das Peças
+CREATE TABLE IF NOT EXISTS Familia (
 	Id INT NOT NULL,
     Designacao VARCHAR(45) NOT NULL,
 	PRIMARY KEY (Id)
 );
 
-/* Cria a tabela das Operacoes */
-CREATE TABLE Operacoes (
+-- Cria a tabela das Operações
+CREATE TABLE IF NOT EXISTS Operacoes (
 	Id INT NOT NULL,
     Designacao VARCHAR(45) NOT NULL,
     CustoHora DECIMAL(8,2) NOT NULL,
 	PRIMARY KEY (Id)
 );
 
-/* Cria a tabela dos Aparelhos */
-CREATE TABLE Aparelhos (
+-- Cria a tabela dos Aparelhos
+CREATE TABLE IF NOT EXISTS Aparelhos (
 	Id INT NOT NULL,
     Designacao VARCHAR(45) NOT NULL,
     Referencia VARCHAR(45) NULL,
@@ -30,7 +33,7 @@ CREATE TABLE Aparelhos (
 	PRIMARY KEY (Id)
 );
 
-/* Cria a tabela dos Tecnicos */
+-- Cria a tabela dos Técnicos
 CREATE TABLE IF NOT EXISTS Tecnicos (
 	Id INT NOT NULL,
 	Nome VARCHAR(45) NULL,
@@ -43,8 +46,8 @@ CREATE TABLE IF NOT EXISTS Tecnicos (
 			REFERENCES Tecnicos (Id)
 );
 
-/* Cria a tabela das Pecas */
-CREATE TABLE Pecas (
+-- Cria a tabela das Peças
+CREATE TABLE IF NOT EXISTS Pecas (
 	Id INT NOT NULL,
     Designacao VARCHAR(45) NOT NULL,
     Familia_Id INT NOT NULL,
@@ -53,8 +56,8 @@ CREATE TABLE Pecas (
 		REFERENCES Familia (Id)
 );
 
-/* Cria a tabela da Producao */
-CREATE TABLE Producao (
+-- Cria a tabela da Produção de Aparelhos
+CREATE TABLE IF NOT EXISTS Producao (
 	NrOrdemFabrico INT NOT NULL,
     Quantidade INT NOT NULL,
     InicioProducao DATETIME NOT NULL,
@@ -67,8 +70,8 @@ CREATE TABLE Producao (
 			REFERENCES Aparelhos (Id)
 );
 
-/* Cria a tabela das Montagens */
-CREATE TABLE Montagem (
+-- Cria a tabela das Montagens de Aparelhos
+CREATE TABLE IF NOT EXISTS Montagem (
 	Aparelho INT NOT NULL,
     Peca INT NOT NULL,
     Operacao INT NOT NULL,
@@ -83,8 +86,8 @@ CREATE TABLE Montagem (
 		REFERENCES Pecas (Id)
 );
 
-/* Cria a tabela dos TecnicosOperacoes */
-CREATE TABLE TecnicosOperacoes (
+-- Cria a tabela dos Técnicos-Operações
+CREATE TABLE IF NOT EXISTS TecnicosOperacoes (
 	Operacao INT NOT NULL,
     Tecnico INT NOT NULL,
     PRIMARY KEY (Operacao, Tecnico),
@@ -93,6 +96,4 @@ CREATE TABLE TecnicosOperacoes (
 	FOREIGN KEY (Operacao)
 		REFERENCES Operacoes (Id)
 );
-
-
 
