@@ -87,6 +87,30 @@ SELECT rental.rental_id AS Aluguer, payment.payment_id AS Pagamento
 -- Criar uma vista que permita fornecer os nomes dos atores (“actor”), ordenados
 -- alfabeticamente, dos últimos 10 filmes alugados.
 
+-- dados que são calculados e não armazenados
+CREATE VIEW ww AS
+SELECT DISTINCT CONCAT(first_name, ' ', last_name)
+AS nome
+FROM actor
+INNER JOIN film_actor USING (actor_id)
+INNER JOIN (
+	SELECT film_id
+    FROM inventory
+    INNER JOIN rental USING (inventory_id)
+    ORDER BY rental_date DESC
+    LIMIT 10) last_rented_movies USING (film_id)
+ORDER BY nome;
+
+
+-- query usada muitas vezes e que tem variedade de valores
+-- tenho de usar plicas sempre
+PREPARE inserir_cidade FROM
+'INSERT INTO city(city, country_id, last_update) VALUES (?, ?, NOW())';
+
+SET @city = 'Nova Cidade';
+SET @country = 44;
+
+EXECUTE inserir_cidade USING @city, @country;
 
 
 

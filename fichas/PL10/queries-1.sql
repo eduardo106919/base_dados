@@ -108,6 +108,7 @@ BEGIN
 END &&
 DELIMITER ;
 
+
 -- Criar um evento que permita transferir todos os dias, às 23:00, os dados contidos na tabela
 -- “rental” para a tabela “alugueres” (com esquema igual à tabela “rental”) localizada na base de
 -- dados “SakilaPt”.
