@@ -1,12 +1,15 @@
 # Base de Dados
 
-Conteúdos abordados na unidade curricular **Base de Dados** 2024/2025
+Conteúdo abordado na unidade curricular **Base de Dados** no ano letivo **2024/2025**.
 
-## Contéudos
+## Conteúdo
 
-Neste repositório poderás encontrar **resoluções** de:
+Neste repositório poderás encontrar o seguinte conteúdo:
+- resolução das [fichas](fichas/) práticas
+- resolução de [testes](testes/) e exames de anos anteriores
+- [slides](slides/) com a matéria abordada na cadeira
+- enunciados de [trabalhos](trabalhos/) práticos de vários anos
 
-- Fichas
-- Testes
+---
 
-:warning: Não há garantia nenhuma que estas resoluções sejam a solução correta :warning:
+Se encontrarem **erros** ou acharem que algo pode estar melhor entrem em [contacto](mailto:a106919@alunos.uminho.pt) comigo.
